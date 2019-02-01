@@ -1,7 +1,7 @@
 ################################################################################
 ##  Raspberry Pi Configuration Settings
 ##
-##  Revision 16, 2013/06/22
+##  Revision 17, 2018/04/22
 ##
 ##  Details taken from the eLinux wiki
 ##  For up-to-date information please refer to wiki page.
@@ -16,6 +16,9 @@
 ##    option they want to enable, and to set the specific value of that option.
 ##
 ##  Overclock settings will be disabled at runtime if the SoC reaches temp_limit
+##
+##  Originally based off https://github.com/Evilpaul/RPi-config/ with minor
+##  update because display_rotate is deprecated.
 ##
 ################################################################################
 
@@ -425,7 +428,9 @@ disable_overscan=1
 ##     0x10000  Horizontal flip
 ##     0x20000  Vertical flip
 ##
-#display_rotate=0
+##    Note: latest firmware deprecates display_rotate so use these instead.
+#display_hdmi_rotate=0
+#display_lcd_rotate=0
 
 ## dispmanx_offline
 ##     Set to "1" to enable offline compositing
@@ -1185,3 +1190,10 @@ max_usb_current=1
 ##     Default 35.
 ##
 #dtparam=pwr_led_gpio=35
+
+# If you would like to enable USB booting on your Pi, uncomment the following line.
+# Boot from microsd card with it, then reboot.
+# Don't forget to comment this back out after using, especially if you plan to use
+# sdcard with multiple machines!
+# NOTE: This ONLY works with the Raspberry Pi 3+
+#program_usb_boot_mode=1
